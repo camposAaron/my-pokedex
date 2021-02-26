@@ -1,1 +1,26 @@
-<p>poke-detail works!</p>
+<mat-card class="poke-card" [style.backgroundColor]="colorType.get(pokemon.type)">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <img src="../../../assets/images/5a0596df9cf05203c4b60445.png" width="50" height="50" alt="playSound">
+      </div>
+     
+      <mat-card-title>{{pokemon.name}}</mat-card-title>
+      <mat-card-subtitle>#{{pokemon.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src={{pokemon.img}} width="200" heigth="200" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+       
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip>Type: {{pokemon.type}}</mat-chip>
+            <mat-chip>Height: {{pokemon.height}}</mat-chip>
+            <mat-chip selected>Weight: {{pokemon.weight}}</mat-chip>
+            <mat-chip selected *ngIf="pokemon.description">Description: {{pokemon.description}}</mat-chip>
+        </mat-chip-list>
+          
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="playCrySound()">Sound</button>
+        <button mat-button (click)="rollback()">Back</button>
+    </mat-card-actions>
+  </mat-card>
+  

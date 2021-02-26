@@ -1,4 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/styles/variables.scss";
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $white; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f2f2f2; }
+
+@media(max-width: 900px){
+    .poke-card{
+        width: 33% !important;
+    }
+}
+
+@media(max-width: 700px){
+    .poke-card{
+        width: 38% !important;
+    }
+}
+
+@media(max-width: 600px){
+    .poke-card{
+        width:  40% !important;
+    }
+}
+
+@media(max-width: 500px){
+    .poke-card{
+        width: 60% !important;
+    }
+}
+
+@media(max-width: 400){
+    .poke-card{
+        width: 75% !important;
+    }
+}
+
+@media(max-width: 350){
+    .poke-card{
+        width: 95% !important;
+    }
+}

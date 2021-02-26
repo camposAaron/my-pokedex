@@ -19,4 +19,9 @@ export class PokemonService {
   getPokemons(index:number):Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/pokemon/${index}`);
   }
+
+  getPokemonDescription(index:number):Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/characteristic/${index}`);
+  }
+
 }

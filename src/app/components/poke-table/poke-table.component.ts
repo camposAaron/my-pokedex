@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { CriesService } from 'src/app/services/cries.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -14,14 +15,15 @@ export class PokeTableComponent implements OnInit {
  displayedColumns: string[] = ['position', 'image', 'name'];
  data:any[] = [];
  dataSource = new MatTableDataSource<any>(this.data);
- pokemons = [];
+
 
  @ViewChild(MatPaginator)paginator?: MatPaginator;
 
   
 constructor(
     private pokeService: PokemonService,
-    private _cries: CriesService
+    private _cries: CriesService,
+    private _router:Router
   ) { 
         
   }
@@ -29,7 +31,7 @@ constructor(
   ngOnInit(): void {
     this.getPokemons();
 
-  }
+  } 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -65,8 +67,8 @@ constructor(
   }
 
   getPokemon(pokemon:any){
-      console.log(pokemon);
-      this._cries.getCryAudio(pokemon.position);
+      this._router.navigateByUrl(`pokeDetail/${pokemon.position}`)
+      console.log(pokemon);;
 
   }
 

@@ -11,12 +11,19 @@ import { Location } from '@angular/common';
   styleUrls: ['./poke-detail.component.scss']
 })
 export class PokeDetailComponent implements OnInit {
-
+  
+  //pokemon selected id
   public id:any;
+  //pokemon object
   public pokemon: any;
+  //pokemon types
   public pokemonType = [];
+  //description
   private description:string
+  //colour type for pokemon
   public colorType:Map<string, string>
+
+  private pokemonSprites:string[] = [];
  
   
 
@@ -86,10 +93,13 @@ export class PokeDetailComponent implements OnInit {
             weight: res.weight,
             type : res.types[0].type.name,
             description : this.description
-
           }
 
-          console.log(this.pokemon);
+          this.pokemonSprites = [
+            res.sprites.front_default,
+            res.sprites.back_default, 
+          ]
+
         },
         err =>{
           console.log(<any>err);
@@ -111,6 +121,14 @@ export class PokeDetailComponent implements OnInit {
 
   playCrySound():void{
      this.__cryService.getCryAudio(this.id);
+  }
+
+  changeSprite():void{
+     if(this.pokemon.img === this.pokemonSprites[0]) 
+        this.pokemon.img = this.pokemonSprites[1];
+     else
+      this.pokemon.img = this.pokemonSprites[0];
+    
   }
 
   rollback():void{
